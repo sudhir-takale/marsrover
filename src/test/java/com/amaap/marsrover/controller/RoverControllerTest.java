@@ -34,6 +34,4 @@ public class RoverControllerTest {
         assertEquals(expected, actual);
     }
 
-
-
 }
