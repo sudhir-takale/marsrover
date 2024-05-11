@@ -1,6 +1,7 @@
 package com.amaap.marsrover.repository.db.impl;
 
 import com.amaap.marsrover.repository.db.InMemoryDatabase;
+import com.amaap.marsrover.repository.dto.PlateauDto;
 import com.amaap.marsrover.repository.dto.RoverDto;
 
 import java.util.ArrayList;
@@ -10,7 +11,9 @@ import java.util.Optional;
 public class FakeInMemoryDatabase implements InMemoryDatabase {
 
     List<RoverDto> rovers = new ArrayList<>();
+    List<PlateauDto> plateauDtos = new ArrayList<>();
     private int roverCounter = 0;
+    private int plateauCounter = 0;
 
     @Override
     public RoverDto save(RoverDto rover) {
@@ -24,6 +27,13 @@ public class FakeInMemoryDatabase implements InMemoryDatabase {
         RoverDto rover = new RoverDto();
         rover.setId(1);
         return Optional.of(rover);
+    }
+
+    @Override
+    public PlateauDto insert(PlateauDto plauDto) {
+        plauDto.setId(++plateauCounter);
+        plateauDtos.add(plauDto);
+        return plauDto;
     }
 
 }
