@@ -9,6 +9,8 @@ import com.google.inject.Injector;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class RoverRepositoryTest {
@@ -33,8 +35,19 @@ class RoverRepositoryTest {
 
         // assert
         assertEquals(rover, actual);
+    }
 
+    @Test
+    void shouldBeAbleToGetRoverById() {
+        // arrange
+        RoverDto rover = new RoverDto();
+        rover.setId(1);
 
+        // act
+        Optional<RoverDto> actual = roverRepository.getRoverById(1);
+
+        // assert
+        assertEquals(1, actual.get().getId());
     }
 
 

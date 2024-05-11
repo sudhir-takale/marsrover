@@ -5,6 +5,7 @@ import com.amaap.marsrover.repository.dto.RoverDto;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class FakeInMemoryDatabase implements InMemoryDatabase {
 
@@ -16,6 +17,13 @@ public class FakeInMemoryDatabase implements InMemoryDatabase {
         rover.setId(++roverCounter);
         rovers.add(rover);
         return rover;
+    }
+
+    @Override
+    public Optional<RoverDto> get(int id) {
+        RoverDto rover = new RoverDto();
+        rover.setId(1);
+        return Optional.of(rover);
     }
 
 }
