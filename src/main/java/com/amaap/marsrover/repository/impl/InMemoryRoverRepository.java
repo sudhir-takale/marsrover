@@ -26,4 +26,9 @@ public class InMemoryRoverRepository implements RoverRepository {
     public Optional<RoverDto> getRoverById(int id) {
         return inMemoryDatabase.get(id);
     }
+
+    @Override
+    public void mark(RoverDto roverDto) {
+        inMemoryDatabase.update(roverDto);
+    }
 }

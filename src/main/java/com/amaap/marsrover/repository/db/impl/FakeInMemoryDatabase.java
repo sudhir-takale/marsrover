@@ -43,4 +43,9 @@ public class FakeInMemoryDatabase implements InMemoryDatabase {
         return Optional.of(plauDto);
     }
 
+    @Override
+    public void update(RoverDto roverDto) {
+
+    }
+
 }

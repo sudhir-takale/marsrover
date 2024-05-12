@@ -8,4 +8,6 @@ public interface RoverRepository {
     RoverDto create();
 
     Optional<RoverDto> getRoverById(int i);
+
+    void mark(RoverDto roverDto);
 }

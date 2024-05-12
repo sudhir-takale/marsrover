@@ -2,6 +2,8 @@ package com.amaap.marsrover.controller;
 
 import com.amaap.marsrover.controller.dto.HttpStatus;
 import com.amaap.marsrover.controller.dto.Response;
+import com.amaap.marsrover.domain.model.Cordinates;
+import com.amaap.marsrover.domain.model.Direction;
 import com.amaap.marsrover.service.PlateauService;
 import com.amaap.marsrover.service.exception.InvalidArgumentException;
 import com.google.inject.Inject;
@@ -30,6 +32,14 @@ public class PlateauController {
         if (plateauService.get(id).isPresent()) {
             return new Response(HttpStatus.OK, "success");
         } else return new Response(HttpStatus.BAD_REQUEST, "failed");
+
+    }
+
+    public Response deploy(int plateauId, int roverId, Cordinates cordinates, Direction direction) {
+
+        if (plateauService.deploy(plateauId, roverId, cordinates, direction) != null)
+            return new Response(HttpStatus.OK, "success");
+        else return new Response(HttpStatus.BAD_REQUEST, "failed");
 
     }
 }

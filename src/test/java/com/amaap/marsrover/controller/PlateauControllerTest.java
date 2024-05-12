@@ -3,6 +3,8 @@ package com.amaap.marsrover.controller;
 import com.amaap.marsrover.RoverModule;
 import com.amaap.marsrover.controller.dto.HttpStatus;
 import com.amaap.marsrover.controller.dto.Response;
+import com.amaap.marsrover.domain.model.Cordinates;
+import com.amaap.marsrover.domain.model.Direction;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
@@ -16,10 +18,14 @@ public class PlateauControllerTest {
     @Inject
     PlateauController plateauController;
 
+    @Inject
+    RoverController roverController;
+
     @BeforeEach
     public void setup() {
         Injector injector = Guice.createInjector(new RoverModule());
         plateauController = injector.getInstance(PlateauController.class);
+        roverController = injector.getInstance(RoverController.class);
     }
 
     @Test
@@ -61,7 +67,21 @@ public class PlateauControllerTest {
 
         // assert
         assertEquals(expected, actual);
-
     }
+
+    @Test
+    void shouldBeAbleToDeployRoverOnPlateau() {
+        // arrange
+        roverController.create();
+        plateauController.create(8, 4);
+        Response expected = new Response(HttpStatus.OK, "success");
+
+        // act
+        Response actual = plateauController.deploy(1, 1, new Cordinates(2, 2), Direction.NORTH);
+
+        // assert
+        assertEquals(expected, actual);
+    }
+
 
 }

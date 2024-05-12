@@ -10,7 +10,9 @@ public interface InMemoryDatabase {
 
     Optional<RoverDto> get(int id);
 
-    PlateauDto insert(PlateauDto plauDto);
+    PlateauDto insert(PlateauDto plateauDto);
 
     Optional<PlateauDto> find(int id);
+
+    void update(RoverDto roverDto);
 }

@@ -1,16 +1,20 @@
 package com.amaap.marsrover.repository.dto;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class PlateauDto {
 
-    private int id;
     private final int length;
     private final int breadth;
+    private int id;
+    private List<RoverDto> rovers;
 
     public PlateauDto(int length, int breadth) {
         this.length = length;
         this.breadth = breadth;
+        rovers = new ArrayList<>();
     }
 
     public int getBreadth() {
@@ -40,5 +44,9 @@ public class PlateauDto {
     @Override
     public int hashCode() {
         return Objects.hash(length, breadth);
+    }
+
+    public void addRover(DeployedRover deployedRover) {
+        this.rovers.add(deployedRover);
     }
 }

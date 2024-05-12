@@ -23,4 +23,9 @@ public class RoverService {
         return roverRepository.getRoverById(id);
 
     }
+
+    public void markDeployed(RoverDto roverDto) {
+        roverDto.setDeployed(true);
+        roverRepository.mark(roverDto);
+    }
 }

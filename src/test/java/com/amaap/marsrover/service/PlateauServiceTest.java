@@ -1,6 +1,8 @@
 package com.amaap.marsrover.service;
 
 import com.amaap.marsrover.RoverModule;
+import com.amaap.marsrover.domain.model.Cordinates;
+import com.amaap.marsrover.domain.model.Direction;
 import com.amaap.marsrover.repository.dto.PlateauDto;
 import com.amaap.marsrover.service.exception.InvalidArgumentException;
 import com.google.inject.Guice;
@@ -18,11 +20,14 @@ class PlateauServiceTest {
 
     @Inject
     PlateauService plateauService;
+    @Inject
+    RoverService roverService;
 
     @BeforeEach
     public void setUp() throws Exception {
         Injector injector = Guice.createInjector(new RoverModule());
         plateauService = injector.getInstance(PlateauService.class);
+        roverService = injector.getInstance(RoverService.class);
     }
 
     @Test
@@ -72,5 +77,21 @@ class PlateauServiceTest {
 
 
     }
+
+    @Test
+    void shouldBeAbleToDeployRoverOnPlateau() throws InvalidArgumentException {
+        // arrange
+        plateauService.create(8, 4);
+        roverService.create();
+
+        // act
+        PlateauDto plateauDto = plateauService.deploy(1, 1, new Cordinates(2, 4), Direction.NORTH);
+
+        // assert
+        assertEquals(1, plateauDto.getId());
+        assertEquals(8, plateauDto.getBreadth());
+
+    }
+
 
 }
