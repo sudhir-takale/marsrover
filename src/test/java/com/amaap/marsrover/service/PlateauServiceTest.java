@@ -1,7 +1,7 @@
 package com.amaap.marsrover.service;
 
 import com.amaap.marsrover.RoverModule;
-import com.amaap.marsrover.domain.model.Cordinates;
+import com.amaap.marsrover.domain.model.Coordinates;
 import com.amaap.marsrover.domain.model.Direction;
 import com.amaap.marsrover.repository.dto.PlateauDto;
 import com.amaap.marsrover.service.exception.InvalidArgumentException;
@@ -87,7 +87,7 @@ class PlateauServiceTest {
         roverService.create();
 
         // act
-        PlateauDto plateauDto = plateauService.deploy(1, 1, new Cordinates(2, 4), Direction.NORTH);
+        PlateauDto plateauDto = plateauService.deploy(1, 1, new Coordinates(2, 4), Direction.N);
 
         // assert
         assertEquals(1, plateauDto.getId());
@@ -95,5 +95,29 @@ class PlateauServiceTest {
 
     }
 
+    @Test
+    void shouldThrowExceptionIfPlateauNotFound() throws InvalidArgumentException, RoverNotFoundException, PlateauNotFoundException {
+        // arrange
+        plateauService.create(8, 4);
+        roverService.create();
+
+        // act & assert
+        assertThrows(PlateauNotFoundException.class, () -> plateauService.deploy(6, 1, new Coordinates(1, 2),
+                Direction.N));
+
+    }
+
+    @Test
+    void shouldThrowExceptionIfRoverNotFound() throws InvalidArgumentException, RoverNotFoundException,
+            PlateauNotFoundException {
+        // arrange
+        plateauService.create(8, 4);
+        roverService.create();
+
+        // act & assert
+        assertThrows(RoverNotFoundException.class, () -> plateauService.deploy(1, 12, new Coordinates(1, 2),
+                Direction.N));
+
+    }
 
 }

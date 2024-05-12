@@ -40,4 +40,12 @@ public class RoverDto {
     public int hashCode() {
         return Objects.hash(id, isDeployed);
     }
+
+    @Override
+    public String toString() {
+        return "RoverDto{" +
+                "id=" + id +
+                ", isDeployed=" + isDeployed +
+                '}';
+    }
 }

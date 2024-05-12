@@ -6,15 +6,14 @@ import java.util.Objects;
 
 public class PlateauDto {
 
+    private int id;
     private final int length;
     private final int breadth;
-    private int id;
-    private List<DeployedRoverDto> rovers;
+    private static List<DeployedRoverDto> rovers = new ArrayList<>();
 
     public PlateauDto(int length, int breadth) {
         this.length = length;
         this.breadth = breadth;
-        rovers = new ArrayList<>();
     }
 
     public int getBreadth() {
@@ -29,9 +28,6 @@ public class PlateauDto {
         this.id = id;
     }
 
-    public int getLength() {
-        return length;
-    }
 
     public List<DeployedRoverDto> getRovers() {
         return rovers;
@@ -52,5 +48,15 @@ public class PlateauDto {
 
     public void addRover(DeployedRoverDto deployedRoverDto) {
         this.rovers.add(deployedRoverDto);
+    }
+
+    @Override
+    public String toString() {
+        return "PlateauDto{" +
+                ", id=" + id +
+                ", length=" + length +
+                "breadth=" + breadth +
+                ", rovers=" + rovers +
+                '}';
     }
 }

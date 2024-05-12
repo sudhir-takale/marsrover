@@ -1,6 +1,6 @@
 package com.amaap.marsrover.service;
 
-import com.amaap.marsrover.domain.model.Cordinates;
+import com.amaap.marsrover.domain.model.Coordinates;
 import com.amaap.marsrover.domain.model.Direction;
 import com.amaap.marsrover.repository.PlateauRepository;
 import com.amaap.marsrover.repository.dto.DeployedRoverDto;
@@ -32,14 +32,14 @@ public class PlateauService {
         return plateauRepository.get(id);
     }
 
-    public PlateauDto deploy(int plateauId, int roverId, Cordinates cordinates, Direction direction) throws PlateauNotFoundException, RoverNotFoundException {
+    public PlateauDto deploy(int plateauId, int roverId, Coordinates coordinates, Direction direction) throws PlateauNotFoundException, RoverNotFoundException {
         Optional<RoverDto> rover = roverService.get(roverId);
         if (rover.isEmpty()) throw new RoverNotFoundException("Rover not found for id " + roverId);
 
         Optional<PlateauDto> plateau = get(plateauId);
         if (plateau.isEmpty()) throw new PlateauNotFoundException("Plateau not found for id " + plateauId);
 
-        plateau.get().addRover(new DeployedRoverDto(rover.get().getId(), cordinates, direction));
+        plateau.get().addRover(new DeployedRoverDto(rover.get().getId(), coordinates, direction));
         roverService.markDeployed(rover.get());
         return plateau.get();
     }

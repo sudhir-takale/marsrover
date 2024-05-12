@@ -3,7 +3,7 @@ package com.amaap.marsrover.controller;
 import com.amaap.marsrover.RoverModule;
 import com.amaap.marsrover.controller.dto.HttpStatus;
 import com.amaap.marsrover.controller.dto.Response;
-import com.amaap.marsrover.domain.model.Cordinates;
+import com.amaap.marsrover.domain.model.Coordinates;
 import com.amaap.marsrover.domain.model.Direction;
 import com.amaap.marsrover.service.exception.PlateauNotFoundException;
 import com.amaap.marsrover.service.exception.RoverNotFoundException;
@@ -79,7 +79,7 @@ public class PlateauControllerTest {
         Response expected = new Response(HttpStatus.OK, "success");
 
         // act
-        Response actual = plateauController.deploy(1, 1, new Cordinates(2, 2), Direction.NORTH);
+        Response actual = plateauController.deploy(1, 1, new Coordinates(2, 2), Direction.N);
 
         // assert
         assertEquals(expected, actual);

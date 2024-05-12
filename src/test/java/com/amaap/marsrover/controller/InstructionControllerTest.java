@@ -1,7 +1,8 @@
 package com.amaap.marsrover.controller;
 
 import com.amaap.marsrover.RoverModule;
-import com.amaap.marsrover.domain.model.Cordinates;
+import com.amaap.marsrover.controller.dto.Response;
+import com.amaap.marsrover.domain.model.Coordinates;
 import com.amaap.marsrover.domain.model.Direction;
 import com.amaap.marsrover.repository.dto.DeployedRoverDto;
 import com.amaap.marsrover.service.exception.PlateauNotFoundException;
@@ -37,10 +38,10 @@ public class InstructionControllerTest {
         int roverId = 1;
         roverController.create();
         plateauController.create(4, 4);
-        plateauController.deploy(1, 1, new Cordinates(4, 0), Direction.NORTH);
+        plateauController.deploy(1, 1, new Coordinates(4, 0), Direction.N);
 
         // act
-        DeployedRoverDto roverDto = instructionController.process(roverId, instruction);
+        Response roverDto = instructionController.process(roverId, instruction);
 
         // assert
 
