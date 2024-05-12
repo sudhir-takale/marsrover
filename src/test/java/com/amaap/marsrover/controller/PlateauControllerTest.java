@@ -36,4 +36,32 @@ public class PlateauControllerTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void shouldReturnBadRequestIfPlateauDimensionsAreInvalid() {
+        // arrange
+        int length = -3;
+        int breadth = 2;
+        Response expected = new Response(HttpStatus.BAD_REQUEST, "failed");
+
+        // act
+        Response actual = plateauController.create(length, breadth);
+
+        // assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldBeAbleToGetPlateauById() {
+        // arrange
+        Response expected = new Response(HttpStatus.OK, "success");
+        plateauController.create(8, 4);
+
+        // act
+        Response actual = plateauController.get(1);
+
+        // assert
+        assertEquals(expected, actual);
+
+    }
+
 }

@@ -11,4 +11,6 @@ public interface InMemoryDatabase {
     Optional<RoverDto> get(int id);
 
     PlateauDto insert(PlateauDto plauDto);
+
+    Optional<PlateauDto> find(int id);
 }

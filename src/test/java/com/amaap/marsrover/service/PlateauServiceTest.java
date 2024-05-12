@@ -9,6 +9,8 @@ import com.google.inject.Injector;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.Optional;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -57,5 +59,18 @@ class PlateauServiceTest {
         assertThrows(InvalidArgumentException.class, () -> plateauService.create(length, breadth));
     }
 
+    @Test
+    void shouldBeAbleToGetPlateauById() throws InvalidArgumentException {
+        // arrange
+        plateauService.create(8, 4);
+
+        // act
+        Optional<PlateauDto> plateauDto1 = plateauService.get(1);
+
+        // assert
+        assertEquals(1, plateauDto1.get().getId());
+
+
+    }
 
 }

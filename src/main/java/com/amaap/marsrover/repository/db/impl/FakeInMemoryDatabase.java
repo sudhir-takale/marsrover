@@ -36,4 +36,11 @@ public class FakeInMemoryDatabase implements InMemoryDatabase {
         return plauDto;
     }
 
+    @Override
+    public Optional<PlateauDto> find(int id) {
+        PlateauDto plauDto = new PlateauDto(8, 4);
+        plauDto.setId(1);
+        return Optional.of(plauDto);
+    }
+
 }

@@ -5,6 +5,8 @@ import com.amaap.marsrover.repository.db.InMemoryDatabase;
 import com.amaap.marsrover.repository.dto.PlateauDto;
 import com.google.inject.Inject;
 
+import java.util.Optional;
+
 public class InMemoryPlateauRepository implements PlateauRepository {
     private final InMemoryDatabase inMemoryDatabase;
 
@@ -17,5 +19,10 @@ public class InMemoryPlateauRepository implements PlateauRepository {
     public PlateauDto save(int length, int breadth) {
         PlateauDto plauDto = new PlateauDto(length, breadth);
         return inMemoryDatabase.insert(plauDto);
+    }
+
+    @Override
+    public Optional<PlateauDto> get(int id) {
+        return inMemoryDatabase.find(id);
     }
 }

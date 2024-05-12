@@ -25,4 +25,11 @@ public class PlateauController {
             return new Response(HttpStatus.BAD_REQUEST, "failed");
         }
     }
+
+    public Response get(int id) {
+        if (plateauService.get(id).isPresent()) {
+            return new Response(HttpStatus.OK, "success");
+        } else return new Response(HttpStatus.BAD_REQUEST, "failed");
+
+    }
 }

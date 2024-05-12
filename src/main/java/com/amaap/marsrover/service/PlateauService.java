@@ -5,6 +5,8 @@ import com.amaap.marsrover.repository.dto.PlateauDto;
 import com.amaap.marsrover.service.exception.InvalidArgumentException;
 import com.google.inject.Inject;
 
+import java.util.Optional;
+
 public class PlateauService {
     private final PlateauRepository plateauRepository;
 
@@ -16,5 +18,9 @@ public class PlateauService {
     public PlateauDto create(int length, int breadth) throws InvalidArgumentException {
         if (length <= 0 || breadth <= 0) throw new InvalidArgumentException("invalid parameters passed");
         return plateauRepository.save(length, breadth);
+    }
+
+    public Optional<PlateauDto> get(int id) {
+        return plateauRepository.get(id);
     }
 }
