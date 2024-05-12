@@ -34,4 +34,17 @@ public class RoverControllerTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    void shouldBeAbleToRoverById() {
+        // arrange
+        Response expected = new Response(HttpStatus.OK, "success");
+        roverController.create();
+
+        // act
+        Response actual = roverController.get(1);
+
+        // assert
+        assertEquals(expected, actual);
+    }
+
 }

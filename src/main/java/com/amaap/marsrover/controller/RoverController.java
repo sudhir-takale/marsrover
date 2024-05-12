@@ -17,4 +17,10 @@ public class RoverController {
         roverService.create();
         return new Response(HttpStatus.OK, "success");
     }
+
+    public Response get(int id) {
+        if (roverService.get(1).isPresent()) {
+            return new Response(HttpStatus.OK, "success");
+        } else return new Response(HttpStatus.BAD_REQUEST, "failed");
+    }
 }
