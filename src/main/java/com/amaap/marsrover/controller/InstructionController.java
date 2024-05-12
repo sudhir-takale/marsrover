@@ -13,7 +13,7 @@ public class InstructionController {
         this.instructionService = instructionService;
     }
 
-    public DeployedRoverDto process(String instruction) {
-        return instructionService.process(1, instruction);
+    public DeployedRoverDto process(int roverId, String instruction) {
+        return instructionService.process(roverId, instruction);
     }
 }

@@ -34,12 +34,13 @@ public class InstructionControllerTest {
     void shouldBeAbleToMoveRover() throws RoverNotFoundException, PlateauNotFoundException {
         // arrange
         String instruction = "LM";
+        int roverId = 1;
         roverController.create();
         plateauController.create(4, 4);
         plateauController.deploy(1, 1, new Cordinates(4, 0), Direction.NORTH);
 
         // act
-        DeployedRoverDto roverDto = instructionController.process(instruction);
+        DeployedRoverDto roverDto = instructionController.process(roverId, instruction);
 
         // assert
 

@@ -6,9 +6,9 @@ import java.util.Objects;
 
 public class PlateauDto {
 
-    private int id;
     private final int length;
     private final int breadth;
+    private int id;
     private List<DeployedRoverDto> rovers;
 
     public PlateauDto(int length, int breadth) {
@@ -31,6 +31,10 @@ public class PlateauDto {
 
     public int getLength() {
         return length;
+    }
+
+    public List<DeployedRoverDto> getRovers() {
+        return rovers;
     }
 
     @Override
