@@ -5,6 +5,8 @@ import com.amaap.marsrover.domain.model.Cordinates;
 import com.amaap.marsrover.domain.model.Direction;
 import com.amaap.marsrover.repository.dto.PlateauDto;
 import com.amaap.marsrover.service.exception.InvalidArgumentException;
+import com.amaap.marsrover.service.exception.PlateauNotFoundException;
+import com.amaap.marsrover.service.exception.RoverNotFoundException;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
@@ -79,7 +81,7 @@ class PlateauServiceTest {
     }
 
     @Test
-    void shouldBeAbleToDeployRoverOnPlateau() throws InvalidArgumentException {
+    void shouldBeAbleToDeployRoverOnPlateau() throws InvalidArgumentException, RoverNotFoundException, PlateauNotFoundException {
         // arrange
         plateauService.create(8, 4);
         roverService.create();
@@ -89,7 +91,7 @@ class PlateauServiceTest {
 
         // assert
         assertEquals(1, plateauDto.getId());
-        assertEquals(8, plateauDto.getBreadth());
+        assertEquals(4, plateauDto.getBreadth());
 
     }
 

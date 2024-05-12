@@ -6,6 +6,8 @@ import com.amaap.marsrover.domain.model.Cordinates;
 import com.amaap.marsrover.domain.model.Direction;
 import com.amaap.marsrover.service.PlateauService;
 import com.amaap.marsrover.service.exception.InvalidArgumentException;
+import com.amaap.marsrover.service.exception.PlateauNotFoundException;
+import com.amaap.marsrover.service.exception.RoverNotFoundException;
 import com.google.inject.Inject;
 
 public class PlateauController {
@@ -35,7 +37,7 @@ public class PlateauController {
 
     }
 
-    public Response deploy(int plateauId, int roverId, Cordinates cordinates, Direction direction) {
+    public Response deploy(int plateauId, int roverId, Cordinates cordinates, Direction direction) throws RoverNotFoundException, PlateauNotFoundException {
 
         if (plateauService.deploy(plateauId, roverId, cordinates, direction) != null)
             return new Response(HttpStatus.OK, "success");

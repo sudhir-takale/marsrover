@@ -3,13 +3,13 @@ package com.amaap.marsrover.repository.dto;
 import com.amaap.marsrover.domain.model.Cordinates;
 import com.amaap.marsrover.domain.model.Direction;
 
-public class DeployedRover {
+public class DeployedRoverDto {
 
     private final int id;
     private final Cordinates cordinates;
     private final Direction direction;
 
-    public DeployedRover(int id, Cordinates cordinates, Direction direction) {
+    public DeployedRoverDto(int id, Cordinates cordinates, Direction direction) {
         this.id = id;
         this.cordinates = cordinates;
         this.direction = direction;

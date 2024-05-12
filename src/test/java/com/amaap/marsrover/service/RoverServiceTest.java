@@ -10,8 +10,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.*;
 
 class RoverServiceTest {
 
@@ -63,5 +62,19 @@ class RoverServiceTest {
         // assert
         assertEquals(1, actual.get().getId());
     }
+
+    @Test
+    void shouldBeAbleToUpdateTheStatusOfRoverWhenDeployed() {
+        // arrange
+        RoverDto rover = new RoverDto();
+        rover.setId(1);
+
+        // act
+        roverService.markDeployed(rover);
+
+        // assert
+        assertTrue(rover.isDeployed());
+    }
+
 
 }

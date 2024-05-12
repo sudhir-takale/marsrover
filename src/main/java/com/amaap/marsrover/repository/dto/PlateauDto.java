@@ -6,10 +6,10 @@ import java.util.Objects;
 
 public class PlateauDto {
 
+    private int id;
     private final int length;
     private final int breadth;
-    private int id;
-    private List<RoverDto> rovers;
+    private List<DeployedRoverDto> rovers;
 
     public PlateauDto(int length, int breadth) {
         this.length = length;
@@ -46,7 +46,7 @@ public class PlateauDto {
         return Objects.hash(length, breadth);
     }
 
-    public void addRover(DeployedRover deployedRover) {
-        this.rovers.add(deployedRover);
+    public void addRover(DeployedRoverDto deployedRoverDto) {
+        this.rovers.add(deployedRoverDto);
     }
 }

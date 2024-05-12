@@ -30,22 +30,24 @@ public class FakeInMemoryDatabase implements InMemoryDatabase {
     }
 
     @Override
-    public PlateauDto insert(PlateauDto plauDto) {
-        plauDto.setId(++plateauCounter);
-        plateauDtos.add(plauDto);
-        return plauDto;
+    public PlateauDto insert(PlateauDto plateauDto) {
+        plateauDto.setId(++plateauCounter);
+        plateauDtos.add(plateauDto);
+        return plateauDto;
     }
 
     @Override
     public Optional<PlateauDto> find(int id) {
-        PlateauDto plauDto = new PlateauDto(8, 4);
-        plauDto.setId(1);
-        return Optional.of(plauDto);
+        PlateauDto plateauDto = new PlateauDto(8, 4);
+        plateauDto.setId(1);
+        return Optional.of(plateauDto);
     }
 
     @Override
     public void update(RoverDto roverDto) {
-
+        for (RoverDto rover : rovers) {
+            if (rover.getId() == roverDto.getId()) rover.setDeployed(true);
+        }
     }
 
 }

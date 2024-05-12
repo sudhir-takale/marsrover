@@ -5,6 +5,8 @@ import com.amaap.marsrover.controller.dto.HttpStatus;
 import com.amaap.marsrover.controller.dto.Response;
 import com.amaap.marsrover.domain.model.Cordinates;
 import com.amaap.marsrover.domain.model.Direction;
+import com.amaap.marsrover.service.exception.PlateauNotFoundException;
+import com.amaap.marsrover.service.exception.RoverNotFoundException;
 import com.google.inject.Guice;
 import com.google.inject.Inject;
 import com.google.inject.Injector;
@@ -70,7 +72,7 @@ public class PlateauControllerTest {
     }
 
     @Test
-    void shouldBeAbleToDeployRoverOnPlateau() {
+    void shouldBeAbleToDeployRoverOnPlateau() throws RoverNotFoundException, PlateauNotFoundException {
         // arrange
         roverController.create();
         plateauController.create(8, 4);
