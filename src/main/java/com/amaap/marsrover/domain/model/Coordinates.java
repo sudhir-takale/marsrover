@@ -1,11 +1,11 @@
 package com.amaap.marsrover.domain.model;
 
-public class Cordinates {
+public class Coordinates {
 
     private int x;
     private int y;
 
-    public Cordinates(int x, int y) {
+    public Coordinates(int x, int y) {
         this.x = x;
         this.y = y;
     }
