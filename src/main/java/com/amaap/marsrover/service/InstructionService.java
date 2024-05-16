@@ -26,12 +26,10 @@ public class InstructionService {
 
         Optional<PlateauDto> plateauDto = plateauService.get(1);
 
-        System.out.println("inst service " + plateauDto.get());
 
         if (!plateauDto.isPresent()) throw new RoverNotFoundException("Plateau not found exception" + roverId);
 
         List<DeployedRoverDto> deployedRoverDto = plateauDto.get().getRovers();
-//        for(DeployedRoverDto dto: deployedRoverDto) System.out.println("dsfds" + dto);
 
         Optional<DeployedRoverDto> roverOptional = deployedRoverDto
                 .stream()

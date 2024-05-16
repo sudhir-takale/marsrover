@@ -4,6 +4,7 @@ import com.amaap.marsrover.controller.dto.HttpStatus;
 import com.amaap.marsrover.controller.dto.Response;
 import com.amaap.marsrover.domain.model.Coordinates;
 import com.amaap.marsrover.domain.model.Direction;
+import com.amaap.marsrover.repository.dto.RoverDto;
 import com.amaap.marsrover.service.PlateauService;
 import com.amaap.marsrover.service.exception.InvalidArgumentException;
 import com.amaap.marsrover.service.exception.PlateauNotFoundException;
@@ -44,4 +45,5 @@ public class PlateauController {
         else return new Response(HttpStatus.BAD_REQUEST, "failed");
 
     }
+
 }
