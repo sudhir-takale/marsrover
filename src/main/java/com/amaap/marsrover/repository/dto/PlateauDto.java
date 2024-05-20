@@ -6,10 +6,10 @@ import java.util.Objects;
 
 public class PlateauDto {
 
-    private int id;
+    private static List<DeployedRoverDto> rovers = new ArrayList<>();
     private final int length;
     private final int breadth;
-    private static List<DeployedRoverDto> rovers = new ArrayList<>();
+    private int id;
 
     public PlateauDto(int length, int breadth) {
         this.length = length;
@@ -58,5 +58,9 @@ public class PlateauDto {
                 "breadth=" + breadth +
                 ", rovers=" + rovers +
                 '}';
+    }
+
+    public int getLength() {
+        return this.length;
     }
 }
