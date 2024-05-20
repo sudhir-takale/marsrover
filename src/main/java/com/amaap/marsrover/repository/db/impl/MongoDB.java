@@ -78,7 +78,6 @@ public class MongoDB implements InMemoryDatabase {
     @Override
     public void update(RoverDto roverDto) {
         roverCollection.updateOne(eq("id", roverDto.getId()), new Document("$set", new Document("isDeployed", true)));
-
     }
 
     private int getNextSequence(String sequenceName) {
